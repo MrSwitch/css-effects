@@ -1,3 +1,14 @@
+
+.demos{
+	display: -webkit-flex;
+	-webkit-flex-direction: row;
+	-webkit-flex-wrap: wrap;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
 .box-demo{
 	display:inline-block;
 	width:220px;
@@ -8,15 +19,23 @@
 	text-align: center;
 	font-weight: bold;
 	color:white;
+
+	-webkit-flex: 1 1 auto;
+	flex: 1 1 auto;
+
+
+	/**
+	 * If there is content
+	 */
+	div.content{
+		width:100%;
+		height:100%;
+		background-color:inherit;
+	}
+
 }
 
 #bulge{
-
-	div.content{
-		width:inherit;
-		height:inherit;
-		background-color:inherit;
-	}
 
 	position: relative;
 	z-index: 1;
@@ -54,12 +73,6 @@
 
 #dogear{
 
-	div.content{
-		width:inherit;
-		height:inherit;
-		background-color:inherit;
-	}
-
 	position: relative;
 	z-index: 1;
 
@@ -81,5 +94,108 @@
 		border-bottom-left-radius: 100% 30%;
 		right:0;
 	}
+}
 
+
+#cast{
+
+
+	position: relative;
+	z-index: 1;
+
+	&:after{
+		background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0) 40%);
+		position: absolute;
+		display: block;
+		content: " ";
+		z-index: -1;
+		height: 100%;
+		width: 100%;
+		bottom: 0;
+		right: 0;
+		-webkit-transform: skewX(-45deg);
+		-webkit-transform-origin: 100% 100%;
+		transform: skewX(-45deg);
+		transform-origin: 100% 100%;
+	}
+}
+
+#fore{
+
+	position: relative;
+	z-index: 1;
+
+	&:after{
+		@height:20px;
+		background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0) 100%);
+
+		position: absolute;
+		display: block;
+		content: " ";
+		z-index: -1;
+		height: @height;
+		bottom: -@height;
+		right: 0;
+		left: 0;
+		-webkit-transform: skewX(45deg);
+		-webkit-transform-origin: 0 0;
+		transform: skewX(45deg);
+		transform-origin: 0 0;
+	}
+}
+
+
+#gloss{
+
+	position: relative;
+	z-index: 1;
+
+	&:after{
+		@height:20px;
+		background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0) 50%);
+		position: absolute;
+		display: block;
+		content: " ";
+		top: 0;
+		bottom: 0;
+		right: 0;
+		left: 0;
+	}
+}
+
+
+
+#cube{
+
+	position: relative;
+	@height:20px;
+
+	&:after,&:before{
+		background-color: rgb(162, 213, 253);
+		position: absolute;
+		display: block;
+		content: " ";
+		height: 100%;
+		width: 100%;
+		bottom: 0;
+		right: 0;
+	}
+
+	&:after{
+		height: @height;
+		top: -@height;
+		-webkit-transform: skewX(-45deg);
+		-webkit-transform-origin: 0 100%;
+		transform: skewX(-45deg);
+		transform-origin: 0 100%;
+	}
+	&:before{
+		background-color: rgb(50, 164, 253);
+		width: @height;
+		right: -@height;
+		-webkit-transform: skewY(-45deg);
+		-webkit-transform-origin: 0 100%;
+		transform: skewY(-45deg);
+		transform-origin: 0 100%;
+	}
 }
