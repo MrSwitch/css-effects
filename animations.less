@@ -1,0 +1,572 @@
+@import 'mixins';
+
+// Base color for boxes
+// Sky blue
+@base:rgb(82, 176, 250);
+
+// Highlight
+@color: white;
+
+// Default shadow
+// Gray
+@shadow:rgba(0, 0, 0, 0.498039);
+
+// 
+.demos{
+	// Set all the children to fill the box using flexbox
+	.flexBoxPack();
+
+	// 
+	font-family:arial;
+}
+
+
+.demo{
+	position: relative;
+	display:inline-block;
+	vertical-align: top;
+	@size:220px;
+	overflow:hidden;
+	height:@size;
+	line-height:@size;
+	width:@size;
+	background-color:@base;
+	margin:40px;
+	color:white;
+	font-size: 2em;
+	text-align: center;
+	font-weight: bold;
+
+	@media @mobile{
+		margin:20px 10px;
+	}
+}
+
+
+
+#ellipsis{
+	overflow:hidden;
+	display: inline-block;
+	vertical-align: top;
+	font-size:inherit;
+	text-align:right;
+	width:1em;
+	.animate(~"ellipsis 1s ease infinite alternate");
+
+	&:after{
+		content:'...';
+		overflow:hidden;
+		display: inline-block;
+	}
+}
+
+.anim-ellipsis(){
+	from {width:0;}
+	to {width: 2em;}
+}
+
+@-webkit-keyframes ellipsis{
+	.anim-ellipsis();
+}
+@-moz-keyframes ellipsis{
+	.anim-ellipsis();
+}
+@-ms-keyframes ellipsis{
+	.anim-ellipsis();
+}
+@keyframes ellipsis{
+	.anim-ellipsis();
+}
+
+
+
+#metro{
+	overflow:hidden;
+	display: inline-block;
+	font-size:inherit;
+	text-align:center;
+	width:100%;
+	.animate(~"metro 1s ease-in-out  infinite alternate");
+
+	&:after{
+		content:'.....';
+		// CREATE A DOT
+		display: inline-block;
+	}
+
+	.anim-metro(){
+		@width:35%;
+		@left:@width;
+		from {
+			.transform(~"translateX( -@{left} )");
+			letter-spacing: 0;
+		}
+		50% {
+			letter-spacing: 0.3em;
+		}
+		to {
+			.transform(~"translateX( @{width} )");
+			letter-spacing: 0;
+		}
+	}
+
+	@-webkit-keyframes metro{
+		.anim-metro();
+	}
+	@-moz-keyframes metro{
+		.anim-metro();
+	}
+	@-ms-keyframes metro{
+		.anim-metro();
+	}
+	@keyframes metro{
+		.anim-metro();
+	}
+}
+
+
+#mexican{
+	overflow:hidden;
+	display: inline-block;
+	text-align:center;
+
+	span{
+		display: inline-block;
+		.animate(~"mexican 1s 0.0s ease-in-out infinite alternate");
+
+		&:after{
+			content: '.';
+		}
+	}
+
+	@iterations:10;
+
+	.loop(@iterations);
+
+	// Looping generator
+	.loop (@index) when (@index>0){
+		(~"span:nth-child(@{iterations}n + @{index})"){
+			.animate-delay( (@index/10) * 1s);
+		}
+		.loop(@index - 1);
+	}
+
+
+	// Animation
+	//
+	.anim-mexican(){
+		80% {
+			.transform(~'translateY(0)');
+		}
+		to {
+			.transform(~'translateY(-0.3em)');
+		}
+	}
+
+	@-webkit-keyframes mexican{
+		.anim-mexican();
+	}
+	@-moz-keyframes mexican{
+		.anim-mexican();
+	}
+	@-ms-keyframes mexican{
+		.anim-mexican();
+	}
+	@keyframes mexican{
+		.anim-mexican();
+	}
+}
+
+
+#spinner{
+	display: inline-block;
+	text-align:center;
+
+	@iterations:8;
+	@degrees:360/@iterations * 1deg;
+
+	.animate(~"spinner 2s 0.0s ease-in-out infinite");
+	.transform(~'rotate(0)');
+
+	span{
+		display: inline-block;
+
+		// Create a skew which is a number of degrees from the root element
+		//.transform(~'skewX(@{degrees})');
+
+		@size:20px;
+		width:@size;
+		height:@size;
+		line-height: @size;
+
+		position: absolute;
+		text-align: left;
+
+		&:after{
+			content: '.';
+		}
+	}
+
+	.loop(@iterations);
+
+	// Looping generator
+	.loop (@index) when (@index>0){
+		(~"span:nth-child(@{iterations}n + @{index})"){
+			// Create a skew which is a number of degrees from the root element
+			@rotate:@index*@degrees;
+			.transform(~'rotate(-@{rotate})', 0 0 );
+		}
+		.loop(@index - 1);
+	}
+
+
+	//
+	// Animation
+	.anim(){
+		to {
+			.transform(~'rotate(360deg)');
+		}
+	}
+
+
+	// Standard
+	@-webkit-keyframes spinner{
+		.anim();
+	}
+	@-moz-keyframes spinner{
+		.anim();
+	}
+	@-ms-keyframes spinner{
+		.anim();
+	}
+	@keyframes spinner{
+		.anim();
+	}
+}
+
+#spinner2{
+	display: inline-block;
+	text-align:center;
+
+	@iterations:8;
+	@degrees:360/@iterations * 1deg;
+
+	.transform(~'rotate(0)');
+
+	span{
+		.animate(~"spinner2 2s 0.0s ease-in-out infinite alternate");
+
+		display: inline-block;
+
+		// Create a skew which is a number of degrees from the root element
+		//.transform(~'skewX(@{degrees})');
+
+		@size:20px;
+		width:@size;
+		height:@size;
+		line-height: @size;
+
+		position: absolute;
+		text-align: left;
+
+		&:after{
+			content: '.';
+		}
+	}
+
+	.loop(@iterations);
+
+	// Looping generator
+	.loop (@index) when (@index>0){
+		(~"span:nth-child(@{iterations}n + @{index})"){
+			// Create a skew which is a number of degrees from the root element
+			.animate-delay(@index/10 * 1s);
+			@rotate:@index*@degrees;
+			.transform(~'rotate(-@{rotate})', 0 0 );
+		}
+		.loop(@index - 1);
+	}
+
+
+
+
+	//
+	// Animation
+	.anim(){
+		to {
+			.transform(~'rotate(720deg)');
+		}
+	}
+
+
+	// Standard
+	@-webkit-keyframes spinner2{
+		.anim();
+	}
+	@-moz-keyframes spinner2{
+		.anim();
+	}
+	@-ms-keyframes spinner2{
+		.anim();
+	}
+	@keyframes spinner2{
+		.anim();
+	}
+}
+
+
+
+
+#tick{
+	height:1em;
+	width:1em;
+	font-size:100px;
+	display: inline-block;
+	border:0.15em solid white;
+	border-radius:50%;
+	position:relative;
+	text-align: center;
+
+	.animate(~"tick 1s ease infinite alternate");
+
+	&:after{
+		content:" ";
+		position: absolute;
+		bottom:-0.07em;
+		left:10%;
+		border-radius: 50%;
+		height:0.05em;
+		width:80%;
+		box-shadow:0 0.4em 0.15em 0 rgba(0,0,0,0.3);
+
+		.animate(~"tick-shadow 1s ease infinite alternate");
+	}
+	&:before{
+		content:" ";
+		position: absolute;
+		bottom:30%;
+		left:30%;
+		height:60%;
+		width:40%;
+
+		.transform(~'rotate(45deg) translate(-0.15em,-0.15em)',50% 50%);
+
+		box-shadow:0.15em 0.15em 0 white;
+
+	}
+}
+
+#cross{
+
+	height:1em;
+	width:1em;
+	font-size:100px;
+	display: inline-block;
+	border:0.15em solid white;
+	border-radius:50%;
+	position:relative;
+	text-align: center;
+
+	.animate(~"tick 1s ease infinite alternate");
+
+	&:after{
+		content:" ";
+		position: absolute;
+		bottom:-0.07em;
+		left:10%;
+		border-radius: 50%;
+		height:0.05em;
+		width:80%;
+		box-shadow:0 0.4em 0.15em 0 rgba(0,0,0,0.3);
+
+		// IE cannot support animation on psuedo elements
+		.animate(~"tick-shadow 1s ease infinite alternate");
+	}
+
+	&:before{
+		@color:white;
+		@size:0.2em;
+		font-size: 0.9em;
+		content:" ";
+		position: absolute;
+		@offset:0.29em;
+		bottom:@offset;
+		left:@offset;
+		height:@size + 0.02;
+		width:@size + 0.02;
+		background-color: @color;
+
+		.transform(~'rotate(45deg)',50% 50%);
+
+		box-shadow:@size 0 0 @color,-@size 0 0 @color,0 @size 0 @color,0 -@size 0 @color;
+	}
+}
+
+.anim-tick(){
+	to{
+		// would like to use em's but IE10 spoons out
+		.transform(~'translateY(20%)',50% 50%);
+	}
+}
+@-webkit-keyframes tick{
+	.anim-tick();
+}
+@-moz-keyframes tick{
+	.anim-tick();
+}
+@-ms-keyframes tick{
+	.anim-tick();
+}
+@keyframes tick{
+	.anim-tick();
+}
+
+
+.anim-tick-shadow(){
+	to{
+		box-shadow:0 0.2em 0.05em 0.01em rgba(0,0,0,0.3);
+	}
+}
+
+@-webkit-keyframes tick-shadow{
+	.anim-tick-shadow();
+}
+@-moz-keyframes tick-shadow{
+	.anim-tick-shadow();
+}
+@-ms-keyframes tick-shadow{
+	.anim-tick-shadow();
+}
+@keyframes tick-shadow{
+	.anim-tick-shadow();
+}
+
+
+////////////////////////////
+// Countdown
+////////////////////////////
+#countdown{
+	position:absolute;
+	counter-reset: countdown;
+	height:100%;
+
+	.animate(~"countdown 5s linear infinite");
+
+	div{
+		counter-increment: countdown;
+		&:after{
+			content:counter(countdown);
+			text-shadow:2em 2em 0 @color, -2em -2em 0 @color,4em 4em 0 @color, -4em -4em 0 @color, 
+						6em 6em 0 @color, -6em -6em 0 @color,8em 8em 0 @color, -8em -8em 0 @color,
+						10em 10em 0 @color, -10em -10em 0 @color,12em 12em 0 @color, -12em -12em 0 @color;
+		}
+	}
+
+	.countdown(){
+		from{
+			top:0;
+		}
+		to{
+			top:-500%;
+		}
+	}
+
+	@-webkit-keyframes countdown{
+		.countdown();
+	}
+	@-moz-keyframes countdown{
+		.countdown();
+	}
+	@-ms-keyframes countdown{
+		.countdown();
+	}
+	@keyframes countdown{
+		.countdown();
+	}
+}
+
+
+#slice{
+
+	display: inline-block;
+	position: relative;
+
+	@size:100px;
+	height:@size;
+	width:@size;
+
+	&:before{
+		content:"yo!";
+		position: absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom: 0;
+		line-height: @size;
+	}
+
+
+
+	&:after{
+		content:" ";
+		border-radius: 50%;
+		display: inline-block;
+		border:20px solid #fff;
+		position: absolute;
+		top:0;
+		left:0;
+		right:0;
+		bottom: 0;
+		.animate(~"pie 2s 0.0s linear infinite");
+	}
+
+
+
+	//
+	// Animation
+	.anim(){
+		0% {
+			-webkit-clip-path: polygon(50% 50%, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0, 50% 0);
+		}
+		12.5%{
+			-webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 0, 100% 0, 100% 0, 100% 0);
+		}
+		25%{
+			-webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 50%, 100% 50%, 100% 50%, 100% 50%);
+		}
+		37.5%{
+			-webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 100% 100%, 100% 100%, 100% 100%);
+		}
+		50%{
+			-webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 50% 100%, 50% 100%, 50% 100%);
+		}
+		62.5%{
+			-webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 100%, 0 100%);
+		}
+		75%{
+			-webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 50%, 0 50%);
+		}
+		87.5%{
+			-webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 0, 0 0);
+		}
+		100%{
+			-webkit-clip-path: polygon(50% 50%, 50% 0, 100% 0, 100% 100%, 0 100%, 0 0, 50% 0);
+		}
+	}
+
+
+	// Standard
+	@-webkit-keyframes pie{
+		.anim();
+	}
+	@-moz-keyframes pie{
+		.anim();
+	}
+	@-ms-keyframes pie{
+		.anim();
+	}
+	@keyframes pie{
+		.anim();
+	}
+
+}
