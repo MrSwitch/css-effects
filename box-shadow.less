@@ -1,45 +1,5 @@
 @import 'mixins';
 
-// Base color for boxes
-// Sky blue
-@base:rgb(82, 176, 250);
-
-// Default shadow
-// Gray
-@shadow:rgba(0, 0, 0, 0.498039);
-
-
-//////////////////////
-// EOF MIXINS
-//////////////////////
-
-.demos{
-	// Set all the children to fill the box using flexbox
-	.flexBoxPack();
-}
-
-
-.box-demo{
-	display:inline-block;
-	width:220px;
-	height:100px;
-	background-color:@base;
-	margin:40px;
-	font-size: 3em;
-	text-align: center;
-	font-weight: bold;
-	color:white;
-
-	/**
-	 * If there is content
-	 */
-	div.content{
-		width:100%;
-		height:100%;
-		background-color:inherit;
-	}
-
-}
 
 #bulge{
 

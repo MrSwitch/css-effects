@@ -1,48 +1,5 @@
 @import 'mixins';
 
-// Base color for boxes
-// Sky blue
-@base:rgb(82, 176, 250);
-
-// Highlight
-@color: white;
-
-// Default shadow
-// Gray
-@shadow:rgba(0, 0, 0, 0.498039);
-
-// 
-.demos{
-	// Set all the children to fill the box using flexbox
-	.flexBoxPack();
-
-	// 
-	font-family:arial;
-}
-
-
-.demo{
-	position: relative;
-	display:inline-block;
-	vertical-align: top;
-	@size:220px;
-	overflow:hidden;
-	height:@size;
-	line-height:@size;
-	width:@size;
-	background-color:@base;
-	margin:40px;
-	color:white;
-	font-size: 2em;
-	text-align: center;
-	font-weight: bold;
-
-	@media @mobile{
-		margin:20px 10px;
-	}
-}
-
-
 
 #ellipsis{
 	overflow:hidden;
@@ -484,6 +441,7 @@
 		.countdown();
 	}
 }
+
 
 
 #slice{
