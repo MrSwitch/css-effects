@@ -3,78 +3,100 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/> 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<!-- use the latest IE browser always, and optionally use chrome frame if installed -->
 	<meta http-equiv="x-ua-compatible" content="IE=edge,chrome=1" />
+
+	<title>LessEffects - A collection of CSS style effects written as LESS mixins</title>
 	<link href="/_packages/document.css" rel="stylesheet" />
-	<script src="/_packages/document.js" async></script>
-	<title>CSS LESS MESS</title>
-	<link rel="stylesheet" href="global.css" />
-	<link rel="stylesheet" href="animations.css" />
-	<link rel="stylesheet" href="icons.css" />
-	<link rel="stylesheet" href="box-shadow.css" />
+	<link rel="stylesheet" href="demo.css" />
+
+	<script src="/_packages/document.js"></script>
 </head>
 <body>
 
-	<h1>Animations</h1>
-	<blockquote>
-		A collection of CSS animations, yeah watch them move, shake and dazzle
-	</blockquote>
+<h1>CssEffects</h1>
 
-	<div class="demos">
+<blockquote>
+	A collection of CSS style effects written as LESS mixins
+</blockquote>
 
-		<div class="demo">loading<span id="ellipsis"></span></div>
 
-		<div class="demo"><span id="metro"></span></div>
+<h2>Quick start</h2>
 
-		<div class="demo"><span id="mexican"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></div>
 
-		<div class="demo"><span id="spinner"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></div>
+<h3>Install</h3>
 
-		<div class="demo"><span id="spinner2"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></div>
 
-		<div class="demo"><span id="tick"></span></div>
+<h3>Apply</h3>
+<p>Within your projects .LESS file @import the mixin's you need.</p>
+<style class="pre" type="less/text">
+	// Import the mixins
+	@import './CssEffects/src/csseffects.less';
 
-		<div class="demo"><span id="cross"></span></div>
+	// Then include into style rules, 
+	// E.g. Create a class name 'box' and apply a special drop shadow to it
+	.box{
+	   .shadow-dogear();
+	}
+</style>
 
-		<div class="demo"><div id="countdown">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-		</div></div>
 
-		<div class="demo"><div id="slice"></div></div>
+<h2>Demos</h2>
 
-		<div class="demo"><span id="icon-profile"></span></div>
+<div class="demos">
 
-		<div class="demo"><span id="icon-contact"></span></div>
+<div class="demo">loading<span id="ellipsis"></span></div>
 
-		<div class="demo"><span id="icon-contacts"></span></div>
+<div class="demo"><span id="metro"></span></div>
 
-		<div class="demo"><span id="icon-ball"></span></div>
+<div class="demo"><span id="mexican"><b></b><b></b><b></b><b></b><b></b><b></b><b></b></b></span></div>
 
-		<div class="demo twitter"><span id="icon-twitter"></span></div>
+<div class="demo"><span id="spinner"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></b></span></div>
 
-		<div id="bulge" class="box-demo"><div class="content">Bulge</div></div>
+<div class="demo"><span id="spinner2"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></b></span></div>
 
-		<div id="float" class="box-demo"><div class="content">Float</div></div>
+<div class="demo"><span id="tick"></span></div>
 
-		<div id="dogear" class="box-demo"><div class="content">Dogear</div></div>
+<div class="demo"><span id="cross"></span></div>
 
-		<div id="cast" class="box-demo"><div class="content">Cast</div></div>
+<div class="demo"><div id="countdown">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div></div>
 
-		<div id="fore" class="box-demo"><div class="content">Fore</div></div>
+<div class="demo"><div id="slice"></div></div>
 
-		<div id="gloss" class="box-demo"><div class="content">Gloss</div></div>
+<div class="demo"><span id="icon-profile"></span></div>
 
-		<div id="cube" class="box-demo"><div class="content">Cube</div></div>
+<div class="demo"><span id="icon-contact"></span></div>
 
-		<div id="block" class="box-demo"><div class="content">Block</div></div>
+<div class="demo"><span id="icon-contacts"></span></div>
 
-		<div id="deco" class="box-demo"><div class="content">Deco</div></div>
+<div class="demo"><span id="icon-ball"></span></div>
 
-	</div>
+<div class="demo twitter"><span id="icon-twitter"></span></div>
+
+<div id="bulge" class="box-demo"><div class="content">Bulge</div></div>
+
+<div id="float" class="box-demo"><div class="content">Float</div></div>
+
+<div id="dogear" class="box-demo"><div class="content">Dogear</div></div>
+
+<div id="cast" class="box-demo"><div class="content">Cast</div></div>
+
+<div id="fore" class="box-demo"><div class="content">Fore</div></div>
+
+<div id="gloss" class="box-demo"><div class="content">Gloss</div></div>
+
+<div id="cube" class="box-demo"><div class="content">Cube</div></div>
+
+<div id="block" class="box-demo"><div class="content">Block</div></div>
+
+<div id="deco" class="box-demo"><div class="content">Deco</div></div>
+
+</div>
 
 </body>
 </html>

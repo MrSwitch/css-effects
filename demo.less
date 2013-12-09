@@ -1,0 +1,172 @@
+/**
+ * @author Andrew Dodson
+ * This is an example script which implements each of the LESS mixins
+ */
+
+
+
+
+// Import the LESS mixins scripts that you need, into your working LESS file
+// e.g...
+
+@import 'src/animations';
+@import 'src/icons';
+@import 'src/box-shadow';
+
+
+///////////////////////////////////////////////////
+// Include the mixins you need
+// Attach each of the mixins to your css selector
+// `Only apply the ones you need`
+///////////////////////////////////////////////////
+
+
+//
+// APPLY ICONS
+//
+#icon-profile{
+	.icon-profile();
+}
+
+
+#icon-contact{
+	.icon-contact();
+}
+
+#icon-contacts{
+	.icon-contacts();
+}
+
+#icon-ball{
+	.icon-ball();
+}
+
+#icon-twitter{
+	.icon-twitter();
+}
+
+
+//
+// SHADOOWS
+//
+#bulge{
+	.shadow-bulge();
+}
+#float{
+	.shadow-float();
+}
+#dogear{
+	.shadow-dogear();
+}
+#cast{
+	.shadow-cast();
+}
+#fore{
+	.shadow-fore();
+}
+#gloss{
+	.shadow-gloss();
+}
+#cube{
+	.shadow-cube();
+}
+#block{
+	.shadow-block();
+}
+#deco{
+	.shadow-deco();
+}
+
+
+//
+// Animations
+//
+#ellipsis{
+	// Apply ellipsis
+	.animation-ellipsis();
+}
+#metro{
+	// Apply metro
+	.animation-metro();
+}
+#mexican{
+	// Apply mexican
+	.animation-mexican();
+}
+#spinner{
+	// Apply spinner
+	.animation-spinner();
+}
+#spinner2{
+	// Apply spinner2
+	.animation-spinner2();
+}
+#tick{
+	// Apply tick
+	.animation-tick();
+}
+#cross{
+	// Apply cross
+	.animation-cross();
+}
+#countdown{
+	// Apply countdown
+	.animation-countdown();
+}
+#slice{
+	// Apply slice
+	.animation-slice();
+}
+
+
+
+
+///////////////////////////////
+// EOF MIXINS IMPLEMENTATIONS
+///////////////////////////////
+
+
+
+.demos{
+	// Set all the children to fill the box using flexbox
+	.flexBoxPack();
+}
+
+
+.demo{
+	position: relative;
+	display:inline-block;
+	vertical-align: top;
+	@size:220px;
+	overflow:hidden;
+	height:@size;
+	line-height:@size;
+	width:@size;
+	background-color:@base;
+	margin:40px;
+	color:white;
+	font-size: 2em;
+	text-align: center;
+	font-weight: bold;
+
+	@media @mobile{
+		margin:20px 10px;
+	}
+}
+
+.box-demo{
+
+	.demo();
+
+	overflow:visible;
+
+	/**
+	 * If there is content
+	 */
+	div.content{
+		width:100%;
+		height:100%;
+		background-color:inherit;
+	}
+
+}
